@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navbar } from "./components/Navbar";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -17,7 +16,6 @@ function App() {
         </>
       ) : (
       <>
-        <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
