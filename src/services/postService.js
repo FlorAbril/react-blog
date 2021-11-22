@@ -13,7 +13,7 @@ const getPosts = async () => {
 
 const deletePost = async (id) => {
   try {
-    const response = await axios.delete(
+    await axios.delete(
       `https://jsonplaceholder.typicode.com/posts/${id}`
     )
     return true
@@ -36,11 +36,11 @@ const createPost = async (post) => {
   }
 }
 
-const editPost = async (id, post) => {
+const editPost = async (post) => {
   try {
     const response = await axios.put(
-      `https://jsonplaceholder.typicode.com/posts/${id}`,
-      post
+      `https://jsonplaceholder.typicode.com/posts/${post.id}`,
+      {data: post}
     )
     return response.data
   } catch(e) {
@@ -50,5 +50,9 @@ const editPost = async (id, post) => {
 }
 
 
-
-export { getPosts, deletePost, createPost, editPost }
+export const postService = {
+  get: getPosts,
+  delete: deletePost,
+  create: createPost,
+  edit: editPost
+}
